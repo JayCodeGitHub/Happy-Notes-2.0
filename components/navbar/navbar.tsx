@@ -23,12 +23,12 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="md:hidden">
-          <div className="relative z-20">
-            <Hamburger />
+          <div className="md:hidden">
+            <div className="relative z-20">
+              <Hamburger />
+            </div>
+            <MobileMenu />
           </div>
-          <MobileMenu />
         </div>
       </nav>
     </>
