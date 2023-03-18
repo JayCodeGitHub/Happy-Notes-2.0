@@ -1,6 +1,8 @@
 import Link from "next/link";
 import NavLink from "../navlink/navlink";
 import { NavigationItems } from "@/assets/items/navigationItems";
+import Hamburger from "../hamburger/hamburger";
+import MobileMenu from "../mobileMenu/mobileMenu";
 
 export default function Navbar() {
   return (
@@ -21,6 +23,12 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="md:hidden">
+          <div className="relative z-20">
+            <Hamburger />
+          </div>
+          <MobileMenu />
         </div>
       </nav>
     </>
