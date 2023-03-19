@@ -4,6 +4,7 @@ import { NavigationItems } from "@/assets/items/navigationItems";
 import Hamburger from "../hamburger/hamburger";
 import MobileMenu from "../mobileMenu/mobileMenu";
 import GitHubButton from "../githubButton/githubButton";
+import DarkModeToggle from "../darkModeToggle/darkModeToggle";
 
 export default function Navbar() {
   return (
@@ -31,6 +32,9 @@ export default function Navbar() {
             <MobileMenu />
           </div>
           <div className="hidden w-56 h-full md:flex">
+            <div className="flex items-center justify-center w-1/2 h-full ">
+              <DarkModeToggle />
+            </div>
             <div className="flex items-center justify-center w-1/2 h-full ">
               <GitHubButton />
             </div>
