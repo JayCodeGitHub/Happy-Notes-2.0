@@ -1,11 +1,23 @@
+import { useState } from "react";
 import AddNewItem from "@/components/addNewItem/addNewItem";
+import Card from "@/components/card/card";
 
 export default function ToDo() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: "shopping",
+    },
+    {
+      id: 2,
+      title: "yoga",
+    },
+  ]);
   return (
     <>
-      <header>
-        <h1 className="text-red-500 ">ToDo</h1>
-      </header>
+      {todos.map(({ id, title }) => (
+        <Card title={title} type="todo" key={id} />
+      ))}
       <AddNewItem />
     </>
   );
