@@ -1,20 +1,13 @@
-import { useEffect } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Navbar from "../navbar/navbar";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators } from "@/state";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const dispatch = useDispatch();
-  const { clearstore } = bindActionCreators(actionCreators, dispatch);
-  useEffect(() => {
-    clearstore();
-  }, []);
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -23,7 +16,11 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      {router.pathname == "/notes" ||
+      router.pathname == "/sites" ||
+      router.pathname == "/todo" ? (
+        <Navbar />
+      ) : null}
       <main className="flex items-center justify-center w-full min-h-screen bg-gradient-to-r from-gray-900 via-gray-700 to-green-900 auto-rows-min 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <div className="grid w-full min-h-screen bg-gradient-to-r dark:from-gray-900 from-white dark:via-gray-700 via-gray-400 dark:to-green-900 to-green-500 auto-rows-min 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
           {children}

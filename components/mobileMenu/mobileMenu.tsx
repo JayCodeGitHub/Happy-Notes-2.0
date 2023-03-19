@@ -4,6 +4,7 @@ import NavLink from "../navlink/navlink";
 import { NavigationItems } from "@/assets/items/navigationItems";
 import DarkModeToggle from "../darkModeToggle/darkModeToggle";
 import GitHubButton from "../githubButton/githubButton";
+import LogOutButton from "../logoutButton/logoutButton";
 
 const variants = {
   open: { x: 0, display: "flex" },
@@ -40,6 +41,12 @@ export default function MobileMenu() {
         </div>
         <div className="flex items-center justify-center w-full h-28">
           <GitHubButton />
+        </div>
+        <div
+          className="flex items-center justify-center w-full h-28"
+          onClick={toggleIsOpen}
+        >
+          <LogOutButton />
         </div>
       </div>
     </motion.div>

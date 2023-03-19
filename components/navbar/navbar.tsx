@@ -5,6 +5,7 @@ import Hamburger from "../hamburger/hamburger";
 import MobileMenu from "../mobileMenu/mobileMenu";
 import GitHubButton from "../githubButton/githubButton";
 import DarkModeToggle from "../darkModeToggle/darkModeToggle";
+import LogOutButton from "../logoutButton/logoutButton";
 
 export default function Navbar() {
   return (
@@ -37,6 +38,9 @@ export default function Navbar() {
             </div>
             <div className="flex items-center justify-center w-1/2 h-full ">
               <GitHubButton />
+            </div>
+            <div className="flex items-center justify-center w-1/2 h-full">
+              <LogOutButton />
             </div>
           </div>
         </div>
