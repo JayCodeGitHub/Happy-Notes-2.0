@@ -1,9 +1,15 @@
 import { HamburgerProvider } from "../hooks/useHamburger";
+import { Provider } from "react-redux";
+import store from "@/state/store/store";
 
 interface AppProvidersProps {
   children: React.ReactNode;
 }
 
 export default function AppProviders({ children }: AppProvidersProps) {
-  return <HamburgerProvider>{children}</HamburgerProvider>;
+  return (
+    <Provider store={store}>
+      <HamburgerProvider>{children}</HamburgerProvider>;
+    </Provider>
+  );
 }

@@ -1,12 +1,21 @@
 // These styles apply to every route in the application
+import { useEffect } from "react";
 import Head from "next/head";
 import Navbar from "../navbar/navbar";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "@/state";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const dispatch = useDispatch();
+  const { clearstore } = bindActionCreators(actionCreators, dispatch);
+  useEffect(() => {
+    clearstore();
+  });
   return (
     <>
       <Head>

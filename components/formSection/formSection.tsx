@@ -1,15 +1,13 @@
 import { Form, Field } from "react-final-form";
 
 interface FormProps {
-  items: any;
-  setItems: any;
+  setItems: (title: string, type: string, body: string) => void;
   type: string;
   isVisible: boolean;
-  setIsVisible: any;
+  setIsVisible: (IsVisible: boolean) => void;
 }
 
 export default function FormSection({
-  items,
   setItems,
   type,
   isVisible,
@@ -21,12 +19,7 @@ export default function FormSection({
         <div className="fixed flex flex-col items-center justify-center w-3/4 p-4 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 border-2 border-green-500 rounded-lg md:w-2/5 top-1/3 md:top-1/2 left-1/2 dark:bg-gray-800">
           <Form
             onSubmit={(formObj) => {
-              const newNote = {
-                id: formObj.title,
-                title: formObj.title,
-                body: formObj.body,
-              };
-              setItems([...items, newNote]);
+              setItems(formObj.title, type, formObj.body);
               formObj.title = "";
               formObj.body = "";
               setIsVisible(false);
