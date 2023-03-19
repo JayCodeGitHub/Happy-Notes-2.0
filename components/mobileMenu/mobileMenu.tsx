@@ -8,7 +8,7 @@ const variants = {
   closed: { x: "100%", display: "none" },
 };
 
-function MobileMenu() {
+export default function MobileMenu() {
   const { isOpen, toggleIsOpen } = useHamburger();
   const shouldReduceMotion = useReducedMotion();
   const transition = shouldReduceMotion ? { duration: 0 } : {};
@@ -35,5 +35,3 @@ function MobileMenu() {
     </motion.div>
   );
 }
-
-export default MobileMenu;
