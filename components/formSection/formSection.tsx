@@ -46,7 +46,7 @@ export default function FormSection({
                     />
                   )}
                 </Field>
-                {type === "note" ? (
+                {type === "notes" ? (
                   <Field name="body">
                     {({ input }) => (
                       <textarea
@@ -58,7 +58,7 @@ export default function FormSection({
                     )}
                   </Field>
                 ) : null}
-                {type === "site" ? (
+                {type === "sites" ? (
                   <Field name="body">
                     {({ input }) => (
                       <input

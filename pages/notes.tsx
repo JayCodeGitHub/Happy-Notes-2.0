@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "@/components/card/card";
+import AddNewItem from "@/components/addNewItem/addNewItem";
 
 export default function Notes() {
   const [notes, setNotes] = useState([
@@ -19,6 +20,7 @@ export default function Notes() {
       {notes.map(({ id, title, body }) => (
         <Card title={title} body={body} type="notes" key={id} />
       ))}
+      <AddNewItem items={notes} setItems={setNotes} type="notes" />
     </>
   );
 }
