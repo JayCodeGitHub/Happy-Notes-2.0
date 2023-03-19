@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
   const { clearstore } = bindActionCreators(actionCreators, dispatch);
   useEffect(() => {
     clearstore();
-  });
+  }, []);
   return (
     <>
       <Head>
