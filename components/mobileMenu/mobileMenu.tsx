@@ -2,6 +2,8 @@ import { useHamburger } from "@/hooks/useHamburger";
 import { motion, useReducedMotion } from "framer-motion";
 import NavLink from "../navlink/navlink";
 import { NavigationItems } from "@/assets/items/navigationItems";
+import DarkModeToggle from "../darkModeToggle/darkModeToggle";
+import GitHubButton from "../githubButton/githubButton";
 
 const variants = {
   open: { x: 0, display: "flex" },
@@ -31,6 +33,14 @@ export default function MobileMenu() {
             {item.name}
           </NavLink>
         ))}
+      </div>
+      <div>
+        <div className="flex items-center justify-center w-full h-28">
+          <DarkModeToggle />
+        </div>
+        <div className="flex items-center justify-center w-full h-28">
+          <GitHubButton />
+        </div>
       </div>
     </motion.div>
   );
