@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AddNewItem from "@/components/addNewItem/addNewItem";
 import Card from "@/components/card/card";
 
 export default function Sites() {
@@ -18,7 +17,6 @@ export default function Sites() {
       {sites.map(({ id, title }) => (
         <Card title={title} type="site" key={id} />
       ))}
-      <AddNewItem />
     </>
   );
 }

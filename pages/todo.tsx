@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AddNewItem from "@/components/addNewItem/addNewItem";
 import Card from "@/components/card/card";
 
 export default function ToDo() {
@@ -18,7 +17,6 @@ export default function ToDo() {
       {todos.map(({ id, title }) => (
         <Card title={title} type="todo" key={id} />
       ))}
-      <AddNewItem />
     </>
   );
 }

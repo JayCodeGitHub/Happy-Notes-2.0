@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AddNewItem from "@/components/addNewItem/addNewItem";
 import Card from "@/components/card/card";
 
 export default function Notes() {
@@ -20,7 +19,6 @@ export default function Notes() {
       {notes.map(({ id, title, body }) => (
         <Card title={title} body={body} type="notes" key={id} />
       ))}
-      <AddNewItem />
     </>
   );
 }
