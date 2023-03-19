@@ -1,4 +1,3 @@
-// These styles apply to every route in the application
 import { useEffect } from "react";
 import Head from "next/head";
 import Navbar from "../navbar/navbar";
