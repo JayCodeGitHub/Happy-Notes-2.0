@@ -21,33 +21,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logIn = async (email: string, password: string) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/auth/login/`,
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`/api/auth/login/`, {
+        email,
+        password,
+      });
       setUser(response.data);
       localStorage.setItem("token", response.data);
     } catch (err: any) {
-      console.log(err.response.data);
+      console.log(err);
     }
   };
 
   const register = async (email: string, password: string) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/auth/register/`,
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`/api/auth/register/`, {
+        email,
+        password,
+      });
       setUser(response.data);
       localStorage.setItem("token", response.data);
     } catch (err: any) {
-      console.log(err.response.data);
+      console.log(err);
     }
   };
 
