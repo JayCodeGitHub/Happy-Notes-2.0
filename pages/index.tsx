@@ -3,6 +3,6 @@ import AuthenticatedApp from "./authenticatedApp";
 import UnauthenticatedApp from "./unauthenticatedApp";
 
 export default function Home() {
-  const { auth } = useAuth();
-  return <>{auth ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>;
+  const { user } = useAuth();
+  return <>{user != null ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>;
 }

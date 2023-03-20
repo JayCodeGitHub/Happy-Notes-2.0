@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/useAuth";
 export default function UnauthenticatedApp() {
   const [newUser, setNewUser] = useState(false);
   const newUserToggle = () => setNewUser(!newUser);
-  const { toggleIsAuth } = useAuth();
+  const { logIn, register } = useAuth();
   return (
     <div className="absolute flex items-center justify-center w-full min-h-screen bg-gradient-to-r from-gray-900 via-gray-700 to-green-900 auto-rows-min 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       {newUser ? (
@@ -13,7 +13,7 @@ export default function UnauthenticatedApp() {
           <div className="flex flex-col items-center justify-around w-full h-full ">
             <Form
               onSubmit={(formObj) => {
-                toggleIsAuth();
+                register(formObj.email, formObj.password);
               }}
               render={({ handleSubmit }) => (
                 <form
@@ -64,7 +64,7 @@ export default function UnauthenticatedApp() {
           <div className="flex flex-col items-center justify-around w-full h-full ">
             <Form
               onSubmit={(formObj) => {
-                toggleIsAuth();
+                logIn(formObj.email, formObj.password);
               }}
               render={({ handleSubmit }) => (
                 <form
