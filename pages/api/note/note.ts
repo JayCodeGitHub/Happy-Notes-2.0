@@ -11,8 +11,8 @@ export default async function handler(
   connectMongo();
   if (req.method == "GET") {
     let doc;
-    const headersList = headers();
-    const token = headersList.get("authorization");
+    const { headers } = req;
+    const token = headers.authorization;
     let decoded;
     let creator;
     if (token) {
@@ -21,7 +21,6 @@ export default async function handler(
     if (decoded) {
       creator = decoded._id;
     }
-
     try {
       doc = await Note.find({ creator: creator });
     } catch (err: any) {

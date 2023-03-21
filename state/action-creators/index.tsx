@@ -45,10 +45,32 @@ export const removeitem = (_id: string, itemType: string) => {
   };
 };
 
-export const clearstore = () => {
-  return (dispatch: Dispatch) => {
-    dispatch({
-      type: ActionType.CLEARSTORE,
-    });
+export const fetchItems = () => {
+  const creator = localStorage.getItem("token");
+  return async (dispatch: Dispatch) => {
+    try {
+      const response = await axios.get(`/api/note/note`, {
+        headers: {
+          authorization: creator,
+        },
+      });
+      const notes = response.data.filter(
+        (item: { itemType: string }) => item.itemType == "notes"
+      );
+      const todos = response.data.filter(
+        (item: { itemType: string }) => item.itemType == "todos"
+      );
+      const sites = response.data.filter(
+        (item: { itemType: string }) => item.itemType == "sites"
+      );
+      dispatch({
+        type: ActionType.FETCHITEMS,
+        notes,
+        todos,
+        sites,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 };

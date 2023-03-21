@@ -51,12 +51,12 @@ const Reducer = (state = initialState, action: Action) => {
           ...state[action.itemType].filter((item) => item._id !== action._id),
         ],
       };
-    case ActionType.CLEARSTORE:
+    case ActionType.FETCHITEMS:
       return {
         ...state,
-        notes: [],
-        sites: [],
-        todos: [],
+        notes: action.notes,
+        todos: action.todos,
+        sites: action.sites,
       };
     default:
       return state;

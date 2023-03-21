@@ -11,9 +11,9 @@ export default function AuthenticatedApp() {
     router.push("/notes");
   }
   const dispatch = useDispatch();
-  const { clearstore } = bindActionCreators(actionCreators, dispatch);
+  const { fetchItems } = bindActionCreators(actionCreators, dispatch);
   useEffect(() => {
-    clearstore();
+    fetchItems();
     handleRedirect();
   }, []);
   return <div></div>;

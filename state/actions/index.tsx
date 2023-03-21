@@ -15,8 +15,11 @@ interface IRemoveItemAction {
   itemType: "notes" | "sites" | "todos";
 }
 
-interface IClearStoreAction {
-  type: ActionType.CLEARSTORE;
+interface IFetchItemsAction {
+  type: ActionType.FETCHITEMS;
+  notes: Array<{ _id: string; itemType: string; title: string; body: string }>;
+  todos: Array<{ _id: string; itemType: string; title: string; body: string }>;
+  sites: Array<{ _id: string; itemType: string; title: string; body: string }>;
 }
 
-export type Action = IAddItemAction | IRemoveItemAction | IClearStoreAction;
+export type Action = IAddItemAction | IRemoveItemAction | IFetchItemsAction;
