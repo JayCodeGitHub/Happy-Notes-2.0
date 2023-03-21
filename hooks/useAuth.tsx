@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+import { useError } from "./useError";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ const AuthContext = React.createContext<AuthContextProps>(
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<string | null>(null);
+  const { dispatchError } = useError();
 
   const logIn = async (email: string, password: string) => {
     try {
@@ -28,7 +30,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(response.data);
       localStorage.setItem("token", response.data);
     } catch (err: any) {
-      console.log(err);
+      dispatchError(err.response.data);
     }
   };
 
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(response.data);
       localStorage.setItem("token", response.data);
     } catch (err: any) {
-      console.log(err);
+      dispatchError(err.response.data);
     }
   };
 

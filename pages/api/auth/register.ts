@@ -17,13 +17,11 @@ export default async function handler(
 
          //Checking is email and password exist
          if(email == undefined ||  password == undefined) {
-          console.log("Enter Email and Password")
           return res.status(400).send("Enter Email and Password");
         }
 
         //Checking if the user os already in the database
         const loginExist = await User.findOne({email: req.body.email});
-        if(loginExist) console.log('Login already exists')
         if(loginExist) return res.status(400).send("Login already exists");
 
         //Checking is email and password has at least 6 characters
