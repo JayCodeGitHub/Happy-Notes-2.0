@@ -1,11 +1,18 @@
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
+import dotenv from 'dotenv';
 
-const uri = process.env.MONGODB_URI;
-  
-if (!uri) {
-    throw new Error('MONGODB_URI not defined');
-}
-  
-mongoose.connect(uri, {useNewUrlParser: true,useUnifiedTopology: true,} as mongoose.ConnectOptions);
+dotenv.config();
 
-const db = mongoose.connection;
+const connectMongo = async () => {
+    
+  if (process.env.DB_CONNECT) {
+    await mongoose.connect(process.env.DB_CONNECT, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }as ConnectOptions);
+  } else {
+    console.error('DB_CONNECT is not defined');
+  }
+};
+
+export default connectMongo;
