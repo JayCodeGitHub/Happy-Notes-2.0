@@ -4,6 +4,7 @@ interface IAddItemAction {
   type: ActionType.ADDITEM;
   itemType: "notes" | "sites" | "todos";
   _id: string;
+  creator: string;
   title: string;
   body: string;
 }

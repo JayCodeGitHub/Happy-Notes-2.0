@@ -2,11 +2,11 @@ import { ActionType } from "../action-types";
 import { Dispatch } from "redux";
 import axios from "axios";
 
-export const additem = (title: string, itemType: string, body?: string) => {
+export const additem = (itemType: string, title: string, body?: string) => {
   const creator = localStorage.getItem("token");
   return async (dispatch: Dispatch) => {
     try {
-      const response = await axios.post(`/api/note`, {
+      const response = await axios.post(`/api/note/note`, {
         headers: {
           authorization: creator,
         },

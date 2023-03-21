@@ -4,26 +4,26 @@ import { ActionType } from "../action-types";
 const initialState = {
   notes: [
     {
+      _id: "",
+      itemType: "notes",
       title: "",
       body: "",
-      _id: "",
-      itemType: "note",
     },
   ],
   todos: [
     {
+      _id: "",
+      itemType: "todos",
       title: "",
       body: "",
-      _id: "",
-      itemType: "todo",
     },
   ],
   sites: [
     {
+      _id: "",
+      itemType: "sites",
       title: "",
       body: "",
-      _id: "",
-      itemType: "site",
     },
   ],
 };
@@ -36,10 +36,11 @@ const Reducer = (state = initialState, action: Action) => {
         [action.itemType]: [
           ...state[action.itemType],
           {
+            _id: action._id,
+            itemType: action.itemType,
+            creator: action.creator,
             title: action.title,
             body: action.body,
-            _id: action.title,
-            itemType: action.itemType,
           },
         ],
       };
