@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useError } from "./useError";
 
@@ -20,6 +20,27 @@ const AuthContext = React.createContext<AuthContextProps>(
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<string | null>(null);
   const { dispatchError } = useError();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      (async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/auth/me/`,
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          setUser(response.data);
+        } catch (err: any) {
+          dispatchError(err.response.data);
+        }
+      })();
+    }
+  }, []);
 
   const logIn = async (email: string, password: string) => {
     try {

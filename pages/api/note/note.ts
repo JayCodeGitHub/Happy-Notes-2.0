@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { headers } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import Note from "../models/note";
 import connectMongo from "../index";
@@ -29,7 +28,6 @@ export default async function handler(
     res.status(200).json(doc);
   } else if (req.method == "POST") {
     const itemType = req.body.itemType;
-    console.log(itemType)
     const title = req.body.title;
     const body = req.body.body;
     const token = req.body.creator;
