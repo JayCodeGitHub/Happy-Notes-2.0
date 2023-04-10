@@ -20,7 +20,7 @@ export function LoadingProvider({ children }: LoadingProviderProps) {
     setIsLoading(false);
   };
   const setIsLoadingTrue = () => {
-    setIsLoading(false);
+    setIsLoading(true);
   };
   return (
     <LoadingContext.Provider
