@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const logIn = async (email: string, password: string) => {
-    setIsLoadingTrue;
+    setIsLoadingTrue();
     try {
       const response = await axios.post(`/api/auth/login/`, {
         email,
@@ -50,14 +50,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("token", response.data);
-      setIsLoadingFalse;
+      setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
     }
   };
 
   const register = async (email: string, password: string) => {
-    setIsLoadingTrue;
+    setIsLoadingTrue();
     try {
       const response = await axios.post(`/api/auth/register/`, {
         email,
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("token", response.data);
-      setIsLoadingFalse;
+      setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
     }
