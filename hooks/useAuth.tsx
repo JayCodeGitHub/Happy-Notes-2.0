@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
+      setIsLoadingFalse();
     }
   };
 
@@ -68,6 +69,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
+      setIsLoadingFalse();
     }
   };
 
