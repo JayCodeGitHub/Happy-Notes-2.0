@@ -12,13 +12,13 @@ interface AppProvidersProps {
 export default function AppProviders({ children }: AppProvidersProps) {
   return (
     <Provider store={store}>
-      <LoadingProvider>
-        <ErrorProvider>
-          <AuthProvider>
+      <ErrorProvider>
+        <AuthProvider>
+          <LoadingProvider>
             <HamburgerProvider>{children}</HamburgerProvider>;
-          </AuthProvider>
-        </ErrorProvider>
-      </LoadingProvider>
+          </LoadingProvider>
+        </AuthProvider>
+      </ErrorProvider>
     </Provider>
   );
 }
