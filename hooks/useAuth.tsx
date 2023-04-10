@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useError } from "./useError";
+import { useLoading } from "./useLoading";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -20,20 +21,18 @@ const AuthContext = React.createContext<AuthContextProps>(
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<string | null>(null);
   const { dispatchError } = useError();
+  const { setIsLoadingFalse, setIsLoadingTrue } = useLoading();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       (async () => {
         try {
-          const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/api/auth/me/`,
-            {
-              headers: {
-                authorization: token,
-              },
-            }
-          );
+          const response = await axios.get(`/api/auth/me/`, {
+            headers: {
+              authorization: token,
+            },
+          });
           setUser(response.data);
         } catch (err: any) {
           dispatchError(err.response.data);
@@ -43,6 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const logIn = async (email: string, password: string) => {
+    setIsLoadingTrue();
     try {
       const response = await axios.post(`/api/auth/login/`, {
         email,
@@ -50,12 +50,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("token", response.data);
+      setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
     }
   };
 
   const register = async (email: string, password: string) => {
+    setIsLoadingTrue();
     try {
       const response = await axios.post(`/api/auth/register/`, {
         email,
@@ -63,6 +65,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       setUser(response.data);
       localStorage.setItem("token", response.data);
+      setIsLoadingFalse();
     } catch (err: any) {
       dispatchError(err.response.data);
     }
