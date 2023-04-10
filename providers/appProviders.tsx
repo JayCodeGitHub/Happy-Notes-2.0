@@ -13,11 +13,11 @@ export default function AppProviders({ children }: AppProvidersProps) {
   return (
     <Provider store={store}>
       <ErrorProvider>
-        <AuthProvider>
-          <LoadingProvider>
+        <LoadingProvider>
+          <AuthProvider>
             <HamburgerProvider>{children}</HamburgerProvider>;
-          </LoadingProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </LoadingProvider>
       </ErrorProvider>
     </Provider>
   );
